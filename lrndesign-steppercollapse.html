@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
-
+<link rel="import" href="../iron-collapse/iron-collapse.html">
+<link rel="import" href="../lrndesign-stepper/lrndesign-stepper.html">
 <!--
 `lrndesign-steppercollapse`
 A LRN element
@@ -15,6 +16,26 @@ A LRN element
       }
     </style>
     <h2>[[title]]</h2>
+
+<lrndesign-stepper>
+  <lrndesign-stepper-button on-click="toggle" title="Step 1: Text" icon="book" url="#"></lrndesign-stepper-button>
+  <iron-collapse>
+  <div>First step content goes here...</div>
+  </iron-collapse>
+  <lrndesign-stepper-button on-click="toggle" title="Step 2: Video" icon="av:play-circle-filled" url="#"></lrndesign-stepper-button>
+  <iron-collapse>
+  <div>Second step content goes here...</div>
+  </iron-collapse>
+  <lrndesign-stepper-button on-click="toggle" title="Step 3: Quiz" icon="assignment-turned-in" url="#"></lrndesign-stepper-button>
+    <iron-collapse>
+  <div>Third step content goes here...</div>
+  </iron-collapse>
+  <lrndesign-stepper-button on-click="toggle" title="Step 4: Discuss" icon="social:people" url="#"></lrndesign-stepper-button>
+  <iron-collapse>
+  <div>Fourth step content goes here...</div>
+  </iron-collapse>
+</lrndesign-stepper>
+
   </template>
 
   <script>
@@ -28,7 +49,10 @@ A LRN element
           value: 'lrndesign-steppercollapse',
         },
       },
-
+toggle: function(e) {
+  console.log(e.target);
+  e.target.parentNode.parentNode.nextSibling.toggle();
+}
     });
   </script>
 </dom-module>
